@@ -1,0 +1,21 @@
+{
+  "name": "BT2",
+  "version": "0.0.1",
+  "homepage": "http://BytesTemplar.com/",
+  "authors": [
+    "fortyseven <fortyseven@gmail.com>"
+  ],
+  "description": "BT in Symfony",
+  "main": "app.php",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.4"
+  }
+}
