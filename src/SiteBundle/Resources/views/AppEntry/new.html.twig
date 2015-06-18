@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Add New Application</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('appentry') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

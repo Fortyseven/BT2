@@ -1,61 +1,12 @@
-body {
-    background: green;
-}
-
-#Content {
-    padding-top: 1em;
-    box-shadow:  none;
-}
-
-/***HeaderMenu***********************************************/
-
-#HeaderMenu {
-    width:            100%;
-    background-color: #AA0000;
-    box-shadow:       0 0 1em black;
-    font-family:      "Conv_RobotoSlab-Bold", serif;
-    box-shadow:       0 0 1em black;
-}
-
-#HeaderMenuContainer {
-    font-size:  2em;
-    text-align: center;
-}
-
-#HeaderMenuLogo {
-    clear: both;
-}
-
-#HeaderMenuLogo img {
-    width: 100%;
-}
-
-#HeaderMenuContainer a {
-    color: white;
-}
-
-#HeaderMenuContainer a:hover {
-    text-decoration: none;
-    position:        relative;
-    top:             2px;
-}
-
-#HeaderMenuContainer div {
-    text-align: center;
-}
-
-#HeaderMenuContainer .selected {
-    text-shadow: 0 0 8px black;
-    color:       gold;
-}
-
-#HeaderMenuContainer ul {
-    padding: 0;
-    margin:  0;
-}
-
-#HeaderMenuContainer li {
-    list-style: none;
-    display:    block;
-}
-
+#Content{padding-top:.5em;box-shadow:none;min-height:100px}
+#HeaderMenu{width:100%;background-color:#8b0000;font-family:"Conv_RobotoSlab-Bold",serif}
+#HeaderMenuContainer{font-size:2em;text-align:center}
+#HeaderMenuLogo{clear:both}
+#HeaderMenuLogo img{width:100%}
+#HeaderMenuContainer a{color:#fff}
+#HeaderMenuContainer a:hover{text-decoration:none;position:relative;top:4px;color:#ffd700}
+#HeaderMenuContainer div{text-align:center}
+#HeaderMenuContainer .selected a{text-shadow:0 0 8px #000;color:#ffd700}
+#HeaderMenuContainer ul{padding:0;margin:0}
+#HeaderMenuContainer li{list-style:none;display:block}
+#Footer{text-align:center;color:#fff;padding-top:1em;padding-bottom:1em;font-size:.8em;text-shadow:0 0 3px #000}
