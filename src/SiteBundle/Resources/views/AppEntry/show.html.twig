@@ -1,56 +1,49 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>AppEntry</h1>
+    <h1>App Entry: {{ entity.name }} </h1>
 
     <div id="AppEntry_View">
-        <div class="view_row">
-            <div class="label">Id</div>
-            <div class="value">{{ entity.id }}</div>
+        <div class="entry_row">
+            <div class="entry_label">Id</div>
+            <div class="entry_value">{{ entity.id }}</div>
         </div>
-        <div class="view_row">
-            <div class="label">Type</div>
-            <div class="value">{{ entity.entrytype.name }}</div>
+        <div class="entry_row">
+            <div class="entry_label">Type</div>
+            <div class="entry_value">{{ entity.entrytype.name }}</div>
         </div>
-        <div class="view_row">
-            <div class="label">Name</div>
-            <div class="value">{{ entity.name }}</div>
+        <div class="entry_row">
+            <div class="entry_label">Name</div>
+            <div class="entry_value">{{ entity.name }}</div>
         </div>
-        <div class="view_row">
-            <div class="label">Short Name</div>
-            <div class="value">{{ entity.shortName }}</div>
+        <div class="entry_row">
+            <div class="entry_label">Short Name</div>
+            <div class="entry_value">{{ entity.shortName }}</div>
         </div>
-        <div class="view_row">
-            <div class="label">Description</div>
-            <div class="value">{{ entity.description }}</div>
+        <div class="entry_row">
+            <div class="entry_label">Description</div>
+            <div class="entry_value">{{ entity.description }}</div>
         </div>
         {% if entity.extra %}
-            <div class="view_row">
-                <div class="label">Extra</div>
-                <div class="value">{{ entity.extra }}</div>
+            <div class="entry_row">
+                <div class="entry_label">Extra</div>
+                <div class="entry_value">{{ entity.extra }}</div>
             </div>
         {% endif %}
-        <div class="view_row">
-            <div class="label">Release Date</div>
+        <div class="entry_row">
+            <div class="entry_label">Release Date</div>
             {% if entity.releasedate %}
-                <div class="value">{{ entity.releaseDate | date('Y-m-d H:i:s') }}</div>
+                <div class="entry_value">{{ entity.releaseDate | date('Y-m-d H:i:s') }}</div>
             {% else %}
-                <div class="value">TBA</div>
+                <div class="entry_value">TBA</div>
             {% endif %}
         </div>
+        <div class="view_actions">
+            <div><a href="{{ path('appentry') }}">Back to the list</a></div>
+            <div><a href="{{ path('appentry_edit', { 'id': entity.id }) }}">Edit</a></div>
+            <div>{{ form(delete_form) }}</div>
+        </div>
+        <div class="clearfix"></div>
     </div>
 
-    <ul class="record_actions">
-        <li>
-            <a href="{{ path('appentry') }}">
-                Back to the list
-            </a>
-        </li>
-        <li>
-            <a href="{{ path('appentry_edit', { 'id': entity.id }) }}">
-                Edit
-            </a>
-        </li>
-        <li>{{ form(delete_form) }}</li>
-    </ul>
 {% endblock %}

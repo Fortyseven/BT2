@@ -8,30 +8,15 @@
 
     <div id="AdminAppList">
         {% for entity in entities %}
-            <div class="card entry">
-                <div style="float:right">{{ entity.entrytype.name }}</div>
-                <div><a href="{{ path('appentry_show', { 'id': entity.id }) }}">{{ entity.id }}</a></div>
-                <div class="name">{{ entity.name }} <span>({{ entity.shortName }})</span></div>
-                <div>{{ entity.description[:40] ~'...' }}</div>
-                <div>{{ entity.extra }}</div>
-                <div>{% if entity.releaseDate %}{{ entity.releaseDate|date('Y-m-d') }}{% endif %}</div>
+            <div class="entry_content">
+                <a class="entry_name" href="{{ path('appentry_show', { 'id': entity.id }) }}">{{ entity.name }}</a> <span class="entry_shortname">({{ entity.shortName }})</span>
 
-                <div class="links">
-                    {% if (entity.links.count > 0) %}
-                        {% for link in entity.links %}
-                            <li><a href="{{ link.url }}">{{ link.description }}</a></li>
-
-                        {% endfor %}
-                    {% else %}
-                        No links.
-                    {% endif %}
+                <div class="entry_options">
+                    <div><a href="{{ path('appentry_show', { 'id': entity.id }) }}">show</a></div>
+                    <div><a href="{{ path('appentry_edit', { 'id': entity.id }) }}">edit</a></div>
                 </div>
 
-                <div class="options">
-                    <div class="button" ><a href="{{ path('appentry_show', { 'id': entity.id }) }}">show</a></div>
-                    <div class="button" ><a href="{{ path('appentry_edit', { 'id': entity.id }) }}">edit</a></div>
-                </div>
-                <div class="clear"></div>
+                <div class="clearfix"></div>
             </div>
         {% endfor %}
 

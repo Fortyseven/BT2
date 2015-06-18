@@ -42,66 +42,30 @@ body {
   z-index:      0;
 }
 
-.card {
-  background: @card-background;
-  padding:    0.5em;
-  margin:     1em;
-  /*border:     1px solid #EEEEEE;*/
-  box-shadow: 2px 2px 8px #888888;
-  clear:      both;
+a {
+  color: @bt-red;
+  text-shadow: 0 0 1px #888;
 }
 
-/***Admin****************************************************/
-#AdminAppList {
-
-  .name {
-    font-weight: bold;
-  }
-
-  .name span {
-    font-style: italic;
-    font-size:  small;
-  }
-
+a:hover {
+  color: @bt-ltred;
+  text-decoration: none;
+  transition: color 0.15s;
 }
 
-#AppEntry_View {
-  .card;
-
-  .label {
-    color: black;
-  }
-}
-
-/***Misc*****************************************************/
-.button {
-  background:    #AA0000;
-  border-radius: 2em;
-  min-width:     100px;
-  display:       inline-block;
-  text-align:    center;
-}
-
-.button a {
-  padding:     0.75em;
-  margin:      0;
-  font-weight: bold;
-  color:       white;
-}
-
-.options {
-  position:    relative;
-  line-height: 2em;
-  float:       right;
-  height:      2em;
-}
-
-#AdminAppNewEntryBtn {
-  float: right;
-}
 
 /***Utils****************************************************/
 .clear {
   clear:   both;
   display: block;
+}
+
+/***Footer***************************************************/
+#Footer {
+  text-align:     center;
+  color:          white;
+  padding-top:    1em;
+  padding-bottom: 1em;
+  font-size:      0.8em;
+  text-shadow:    0 0 3px black;
 }
