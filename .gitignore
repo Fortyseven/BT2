@@ -11,3 +11,4 @@
 /web/bundles/
 /web/css/*.css
 .idea
+/app/db/apps.db
