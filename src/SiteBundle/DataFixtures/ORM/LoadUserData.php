@@ -2,13 +2,13 @@
 
     namespace SiteBundle\DataFixtures\ORM;
 
-
-    use SiteBundle\Entity\AppEntry;
-    use SiteBundle\Entity\AppEntryType;
-    use SiteBundle\Entity\AppLinks;
     use Doctrine\Common\Collections\ArrayCollection;
     use Doctrine\Common\DataFixtures\FixtureInterface;
     use Doctrine\Common\Persistence\ObjectManager;
+    use SiteBundle\Debug\FakerProviders\ProjectNameProvider;
+    use SiteBundle\Entity\AppEntry;
+    use SiteBundle\Entity\AppEntryType;
+    use SiteBundle\Entity\AppLinks;
 
     class LoadUserData implements FixtureInterface
     {
@@ -57,6 +57,9 @@
         private function loadTestData( ObjectManager &$manager )
         {
             echo "* Loading test data.\n";
+
+            $faker = \Faker\Factory::create();
+            $faker->addProvider( new ProjectNameProvider( $faker ) );
 
             /*****************************************/
             $app_entry = new AppEntry();
@@ -116,6 +119,34 @@
                       ->setEntryType( $type );
 
             $manager->persist( $app_entry );
+
+            /*** FAKE ENTRIES **************/
+            for ( $i = 0; $i < 20; $i++ ) {
+                $app_entry = new AppEntry();
+
+                $pn = $faker->projectName;
+                $app_entry->setName( $pn )
+                          ->setShortName( strtolower( $pn ) )
+                          ->setDescription( $faker->realText() )
+                          ->setReleaseDate( AppEntry::TBA );
+
+                $type = $this->findAppType( $manager, "Game" );
+
+                $links = new ArrayCollection();
+
+                for ( $j = 0; $j < rand( 0, 3 ); $j++ ) {
+                    $links[ ] = $this->createLink( $manager,
+                                                   $app_entry,
+                                                   $faker->words(3, true),
+                                                   $faker->url );
+                }
+
+                $app_entry->setLinks( $links )
+                          ->setEntryType( $type );
+
+                $manager->persist( $app_entry );
+
+            }
         }
 
 

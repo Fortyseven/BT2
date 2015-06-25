@@ -14,7 +14,7 @@
          */
         public function buildForm( FormBuilderInterface $builder, array $options )
         {
-            $builder->add( 'entry_type_id' )
+            $builder->add( 'entryType' )
                     ->add( 'name' )
                     ->add( 'shortName' )
                     ->add( 'description' )

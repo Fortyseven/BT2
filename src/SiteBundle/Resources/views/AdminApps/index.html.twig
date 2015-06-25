@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <div id="AdminAppNewEntryBtn" class="button">
+        <a href="{{ path('admin_apps_new') }}">Create a new entry</a>
+    </div>
+    <h1>Applications</h1>
+
+    <div id="AdminAppList">
+        {% for entity in entities %}
+            <div class="entry_content">
+                <a class="entry_name" href="{{ path('admin_apps_view', { 'id': entity.id }) }}">{{ entity.name }}</a> <span class="entry_shortname">({{ entity.shortName }})</span>
+
+                <div class="entry_options">
+                    <div><a href="{{ path('admin_apps_view', { 'id': entity.id }) }}">show</a></div>
+                    <div><a href="{{ path('admin_apps_edit', { 'id': entity.id }) }}">edit</a></div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -39,8 +39,8 @@
             {% endif %}
         </div>
         <div class="view_actions">
-            <div><a href="{{ path('appentry') }}">Back to the list</a></div>
-            <div><a href="{{ path('appentry_edit', { 'id': entity.id }) }}">Edit</a></div>
+            <div><a href="{{ path('admin_apps') }}">Back to the list</a></div>
+            <div><a href="{{ path('admin_apps_edit', { 'id': entity.id }) }}">Edit</a></div>
             <div>{{ form(delete_form) }}</div>
         </div>
         <div class="clearfix"></div>

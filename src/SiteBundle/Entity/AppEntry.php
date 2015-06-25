@@ -62,7 +62,8 @@
 
         /**
          * @var date
-         * @ORM\Column(name="release_date", type="date", nullable=true, options={"default"="now"})
+         * @ORM\Column(name="release_date", type="date", nullable=true,
+         *                                  options={"default"="now"})
          */
         private $releaseDate;
 
@@ -75,7 +76,8 @@
 
         /**
          * @var int
-         * @ORM\Column(name="priority", type="integer", options={"default"="0"}, nullable=true)
+         * @ORM\Column(name="priority", type="integer",
+         *                              options={"default"="0"}, nullable=true)
          */
         private $priority = 0;
 
@@ -93,7 +95,6 @@
         {
             $this->links = new ArrayCollection();
         }
-
 
         //<editor-fold desc="Getters/Setters">
         /**
