@@ -1,16 +1,121 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>AppEntry edit</h1>
+    <h1>Application Edit</h1>
 
-    {{ form(edit_form) }}
+    <div id="AdminAppEdit" class="admin-form">
+        {{ form_start(edit_form) }}
+        <div class="form-row">
+            <div class="form-label">{{ form_label(edit_form.entryType) }}</div>
+            <div class="form-value">{{ form_widget(edit_form.entryType) }}</div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">{{ form_label(edit_form.name) }}</div>
+            <div class="form-value">{{ form_widget(edit_form.name) }}</div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">{{ form_label(edit_form.shortName) }}</div>
+            <div class="form-value">{{ form_widget(edit_form.shortName) }}</div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">{{ form_label(edit_form.description) }}</div>
+            <div class="form-value">{{ form_widget(edit_form.description) }}</div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">{{ form_label(edit_form.blurb) }}</div>
+            <div class="form-value">{{ form_widget(edit_form.blurb) }}</div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">{{ form_label(edit_form.extra) }}</div>
+            <div class="form-value">{{ form_widget(edit_form.extra) }}</div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">{{ form_label(edit_form.releaseDate) }}</div>
+            <div class="form-value">{{ form_widget(edit_form.releaseDate) }}</div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">
+                <div>Links</div>
+                <div class="link-add-button"><a onclick="form_links.addBlank()">Add</a></div>
+            </div>
+            <div id="AppLinkList" class="form-value">
+                <div class="form-link-header">
+                    <div class="form-link-value"><span>URL</span></div>
+                    <div class="form-link-value"><span>Description</span></div>
+                    <div class='form-link-actions'></div>
+                </div>
+                {% for link in edit_form.links %}
+                    <div class="form-link-row" data-linkid="{{ link.vars.value.id }}">
+                        <div class="form-link-value">{{ form_widget(link.url) }}</div>
+                        <div class="form-link-value">{{ form_widget(link.description) }}</div>
+                        <div class='form-link-actions'><a onclick="form_links.linkDelete({{ link.vars.value.id }});">Remove</a></div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-submit">{{ form_widget(edit_form.submit) }}</div>
+    </div>
+    {{ form_end(edit_form) }}
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('admin_apps') }}">
+                Back to the list
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
+    </div>
+    <div class="clearfix"></div>
+    <script>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('admin_apps') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+        var form_links = null;
+
+        $( document ).ready( function ()
+                             {
+                                 form_links = new Links();
+                             } );
+
+
+        var Links = function ()
+        {
+            var LINK_BLOCK_ID = "#AppLinkList";
+
+            var link_prototype = '<div class="form-link-row" data-linkid="__local_id__">'
+                                 +
+                                 '<div class="form-link-value"><input type="text" id="SiteBundle_appentry_links___name___url" name="SiteBundle_appentry[links][__name__][url]" required="required" maxlength="255" /></div>'
+                                 +
+                                 '<div class="form-link-value"><input type="text" id="SiteBundle_appentry_links___name___description" name="SiteBundle_appentry[links][__name__][description]" required="required" maxlength="255" /></div>'
+                                 + '<div class="form-link-actions"><a onclick="form_links.linkDelete(\'__local_id__\');">Remove</a></div>'
+                                 + '</div>';
+            var link_count = 0;
+
+            /* New links won't be persisted to the database until the entire entry is saved. So
+             we mark them specifically so we don't hit the server when removing the link. Links
+             that originated from the server will be a plain numberic id.
+             */
+            this.addBlank = function ()
+            {
+                this.link_count++;
+
+                var new_link = link_prototype.replace( /__name__/g, String( this.link_count ) )
+                        .replace( /__local_id__/g, "LOCAL-" + this.link_count );
+
+                $( LINK_BLOCK_ID ).append( new_link );
+            };
+
+            this.linkDelete = function ( id )
+            {
+                if ( confirm( "Delete this link?" ) )
+                {
+                    var row = $( LINK_BLOCK_ID ).find( ".form-link-row[data-linkid=" + id + "]" );
+                    row.remove();
+                }
+            };
+
+            // construct
+            this.link_count = $( LINK_BLOCK_ID ).find( ".form-link-row" ).length;
+        }
+    </script>
 {% endblock %}

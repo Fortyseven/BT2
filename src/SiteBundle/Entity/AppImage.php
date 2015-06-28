@@ -1,5 +1,4 @@
 <?php
-
     namespace SiteBundle\Entity;
 
     use Doctrine\ORM\Mapping as ORM;
@@ -23,18 +22,64 @@
 
         /**
          * @var integer
-         *
-         * @ORM\Column(name="app_entry_id", type="integer")
+         * @ORM\ManyToOne(targetEntity="SiteBundle\Entity\AppEntry", inversedBy="images")
+         * @ORM\JoinColumn(name="app_id", referencedColumnName="id", nullable=false)
          */
-        private $appEntryId;
+        private $appId;
 
         /**
          * @var string
-         *
-         * @ORM\Column(name="filename", type="string", length=255)
+         * @ORM\Column(name="name", type="string", length=255)
          */
-        private $filename;
+        private $name;
 
+        /**
+         * @var string
+         * @ORM\Column(name="web_path", type="string", length=255)
+         */
+        private $webPath;
+
+        //<editor-fold desc="Getters/Setters">
+
+        /**
+         * @return mixed
+         */
+        public function getName()
+        {
+            return $this->name;
+        }
+
+        /**
+         * @param mixed $name
+         *
+         * @return AppImage
+         */
+        public function setName( $name )
+        {
+            $this->name = $name;
+
+            return $this;
+        }
+
+        /**
+         * @return string
+         */
+        public function getWebPath()
+        {
+            return $this->webPath;
+        }
+
+        /**
+         * @param string $webPath
+         *
+         * @return AppImage
+         */
+        public function setWebPath( $webPath )
+        {
+            $this->webPath = $webPath;
+
+            return $this;
+        }
 
         /**
          * Get id
@@ -50,6 +95,7 @@
          * Set appEntryId
          *
          * @param integer $appEntryId
+         *
          * @return AppImage
          */
         public function setAppEntryId( $appEntryId )
@@ -68,27 +114,5 @@
         {
             return $this->appEntryId;
         }
-
-        /**
-         * Set filename
-         *
-         * @param string $filename
-         * @return AppImage
-         */
-        public function setFilename( $filename )
-        {
-            $this->filename = $filename;
-
-            return $this;
-        }
-
-        /**
-         * Get filename
-         *
-         * @return string
-         */
-        public function getFilename()
-        {
-            return $this->filename;
-        }
+        //</editor-fold>
     }

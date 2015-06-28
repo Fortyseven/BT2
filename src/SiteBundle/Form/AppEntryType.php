@@ -17,9 +17,18 @@
             $builder->add( 'entryType' )
                     ->add( 'name' )
                     ->add( 'shortName' )
-                    ->add( 'description' )
-                    ->add( 'extra' )
-                    ->add( 'releaseDate' );
+                    ->add( 'description', 'textarea' )
+                    ->add( 'blurb', 'text' )
+                    ->add( 'extra', 'textarea' )
+                    ->add( 'releaseDate', 'date' )
+                    ->add( 'links',
+                           'collection',
+                           [ 'type'               => new AppLinkType(),
+                             'allow_add'          => true,
+                             'allow_delete'       => true,
+                             'delete_empty'       => true,
+//                             'attr'               => [ 'id' => 'AdminEditLinks' ]
+                           ] );
         }
 
         /**
@@ -27,7 +36,7 @@
          */
         public function setDefaultOptions( OptionsResolverInterface $resolver )
         {
-            $resolver->setDefaults( array( 'data_class' => 'SiteBundle\Entity\AppEntry' ) );
+            $resolver->setDefaults( [ 'data_class' => 'SiteBundle\Entity\AppEntry' ] );
         }
 
         /**

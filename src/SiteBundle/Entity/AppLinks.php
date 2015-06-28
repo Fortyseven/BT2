@@ -23,7 +23,7 @@ class AppLinks
 
     /**
      * @var integer
-     * @ORM\ManyToOne(targetEntity="SiteBundle\Entity\AppEntry", inversedBy="links")
+     * @ORM\ManyToOne(targetEntity="SiteBundle\Entity\AppEntry", inversedBy="links", cascade={"persist"})
      * @ORM\JoinColumn(name="app_id", referencedColumnName="id", nullable=false)
      */
     private $appId;
@@ -121,4 +121,11 @@ class AppLinks
     {
         return $this->url;
     }
+
+    function __toString()
+    {
+        return $this->url;
+    }
+
+
 }

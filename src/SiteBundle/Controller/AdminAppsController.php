@@ -1,5 +1,4 @@
 <?php
-
     namespace SiteBundle\Controller;
 
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -31,7 +30,7 @@
 
             $entities = $em->getRepository( 'SiteBundle:AppEntry' )->findAll();
 
-            return array( 'entities' => $entities, );
+            return [ 'entities' => $entities, ];
         }
 
         /**
@@ -55,7 +54,7 @@
                 return $this->redirect( $this->generateUrl( 'admin_apps_view', [ 'id' => $entity->getId() ] ) );
             }
 
-            return array( 'entity' => $entity, 'form' => $form->createView(), );
+            return [ 'entity' => $entity, 'form' => $form->createView(), ];
         }
 
         /**
@@ -89,7 +88,7 @@
             $entity = new AppEntry();
             $form   = $this->createCreateForm( $entity );
 
-            return array( 'entity' => $entity, 'form' => $form->createView(), );
+            return [ 'entity' => $entity, 'form' => $form->createView(), ];
         }
 
         /**
@@ -111,7 +110,7 @@
 
             $deleteForm = $this->createDeleteForm( $id );
 
-            return array( 'entity' => $entity, 'delete_form' => $deleteForm->createView(), );
+            return [ 'entity' => $entity, 'delete_form' => $deleteForm->createView(), ];
         }
 
         /**
@@ -134,8 +133,9 @@
             $editForm   = $this->createEditForm( $entity );
             $deleteForm = $this->createDeleteForm( $id );
 
-            return array( 'entity'      => $entity, 'edit_form' => $editForm->createView(),
-                          'delete_form' => $deleteForm->createView(), );
+            return [ 'entity'      => $entity,
+                     'edit_form'   => $editForm->createView(),
+                     'delete_form' => $deleteForm->createView(), ];
         }
 
         /**
@@ -152,7 +152,7 @@
                                        [ 'action' => $this->generateUrl( 'admin_apps_update', [ 'id' => $entity->getId() ] ),
                                          'method' => 'PUT', ] );
 
-            $form->add( 'submit', 'submit', array( 'label' => 'Update' ) );
+            $form->add( 'submit', 'submit', [ 'label' => 'Update' ] );
 
             return $form;
         }
@@ -179,14 +179,21 @@
             $editForm->handleRequest( $request );
 
             if ( $editForm->isValid() ) {
+
+                // persist tags
+
+                $links = $editForm->getData()->getLinks();
+                foreach ( $links as &$link ) {
+                    $link->setAppId( $entity );
+                }
+
                 $em->flush();
 
-                return $this->redirect( $this->generateUrl( 'admin_apps_edit',
-                                                            array( 'id' => $id ) ) );
+                return $this->redirect( $this->generateUrl( 'admin_apps_edit', [ 'id' => $id ] ) );
             }
 
-            return array( 'entity'      => $entity, 'edit_form' => $editForm->createView(),
-                          'delete_form' => $deleteForm->createView(), );
+            return [ 'entity'      => $entity, 'edit_form' => $editForm->createView(),
+                     'delete_form' => $deleteForm->createView(), ];
         }
 
         /**
@@ -229,7 +236,11 @@
                         ->setMethod( 'DELETE' )
                         ->add( 'submit',
                                'submit',
-                               [ 'label' => 'Delete' ] )
+                               [ 'label' => 'Delete',
+                                 'attr'  => [
+                                         'onclick' => 'return confirm("OKAY?")'
+                                 ]
+                               ] )
                         ->getForm();
         }
     }

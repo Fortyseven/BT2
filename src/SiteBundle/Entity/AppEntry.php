@@ -56,22 +56,34 @@
         /**
          * @var string
          *
+         * @ORM\Column(name="blurb", type="text", nullable=true)
+         */
+        private $blurb;
+
+        /**
+         * @var string
+         *
          * @ORM\Column(name="extra", type="text", nullable=true)
          */
         private $extra;
 
         /**
          * @var date
-         * @ORM\Column(name="release_date", type="date", nullable=true,
-         *                                  options={"default"="now"})
+         * @ORM\Column(name="release_date", type="date", nullable=true, options={"default"="now"})
          */
         private $releaseDate;
 
         /**
          * @var ArrayCollection
-         * @ORM\OneToMany(targetEntity="SiteBundle\Entity\AppLinks", mappedBy="appId")
+         * @ORM\OneToMany(targetEntity="SiteBundle\Entity\AppLinks", mappedBy="appId", cascade={"persist", "remove"}, orphanRemoval=true)
          */
         private $links;
+
+        /**
+         * @var ArrayCollection
+         * @ORM\OneToMany(targetEntity="SiteBundle\Entity\AppImage", mappedBy="appId")
+         */
+        private $images;
 
 
         /**
@@ -80,14 +92,6 @@
          *                              options={"default"="0"}, nullable=true)
          */
         private $priority = 0;
-
-        /**
-         * @return int
-         */
-        public function getPriority()
-        {
-            return $this->priority;
-        }
 
 
         /************************************************************/
@@ -111,6 +115,7 @@
          * Set name
          *
          * @param string $name
+         *
          * @return AppEntry
          */
         public function setName( $name )
@@ -134,6 +139,7 @@
          * Set shortName
          *
          * @param string $shortName
+         *
          * @return AppEntry
          */
         public function setShortName( $shortName )
@@ -154,9 +160,30 @@
         }
 
         /**
+         * @return string
+         */
+        public function getBlurb()
+        {
+            return $this->blurb;
+        }
+
+        /**
+         * @param string $blurb
+         *
+         * @return AppEntry
+         */
+        public function setBlurb( $blurb )
+        {
+            $this->blurb = $blurb;
+
+            return $this;
+        }
+
+        /**
          * Set description
          *
          * @param string $description
+         *
          * @return AppEntry
          */
         public function setDescription( $description )
@@ -180,6 +207,7 @@
          * Set extra
          *
          * @param string $extra
+         *
          * @return AppEntry
          */
         public function setExtra( $extra )
@@ -245,6 +273,8 @@
 
         /**
          * @param ArrayCollection $links
+         *
+         * @return AppEntry
          */
         public function setLinks( $links )
         {
@@ -253,8 +283,23 @@
             return $this;
         }
 
+        public function removeLink( AppLinks $link )
+        {
+            $this->links->removeElement( $link );
+        }
+
+        /**
+         * @return int
+         */
+        public function getPriority()
+        {
+            return $this->priority;
+        }
+
+
         /**
          * @param int $priority
+         *
          * @return AppEntry
          */
         public function setPriority( $priority )
@@ -264,5 +309,24 @@
             return $this;
         }
 
+        /**
+         * @return ArrayCollection
+         */
+        public function getImages()
+        {
+            return $this->images;
+        }
+
+        /**
+         * @param ArrayCollection $images
+         *
+         * @return AppEntry
+         */
+        public function setImages( $images )
+        {
+            $this->images = $images;
+
+            return $this;
+        }
         //</editor-fold>
     }

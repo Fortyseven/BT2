@@ -126,18 +126,36 @@
 
                 $pn = $faker->projectName;
                 $app_entry->setName( $pn )
-                          ->setShortName( strtolower( $pn ) )
+                          ->setShortName( str_replace( " ", "", strtolower( $pn ) ) )
                           ->setDescription( $faker->realText() )
+                          ->setBlurb( $faker->realText() )
                           ->setReleaseDate( AppEntry::TBA );
 
-                $type = $this->findAppType( $manager, "Game" );
+                $type_name = "";
+                switch ( rand( 1, 4 ) ) {
+                    case 1:
+                        $type_name = "Other";
+                        break;
+                    case 2:
+                        $type_name = "Game";
+                        break;
+                    case 3:
+                        $type_name = "Mobile";
+                        break;
+                    case 4:
+                        $type_name = "Web";
+                        break;
+                    //case 5: $type_name = "Legacy";
+
+                }
+                $type = $this->findAppType( $manager, $type_name );
 
                 $links = new ArrayCollection();
 
                 for ( $j = 0; $j < rand( 0, 3 ); $j++ ) {
                     $links[ ] = $this->createLink( $manager,
                                                    $app_entry,
-                                                   $faker->words(3, true),
+                                                   $faker->words( 3, true ),
                                                    $faker->url );
                 }
 
@@ -145,7 +163,6 @@
                           ->setEntryType( $type );
 
                 $manager->persist( $app_entry );
-
             }
         }
 
@@ -153,13 +170,13 @@
         /**
          * @param $manager
          * @param $type_name
+         *
          * @return AppEntryType
          */
         private function findAppType( ObjectManager &$manager, $type_name )
         {
             return $manager->getRepository( "SiteBundle:AppEntryType" )
-                           ->findOneBy( array( "name" => "Game" ) );
-
+                           ->findOneBy( array( "name" => $type_name ) );
         }
 
         /**
@@ -167,6 +184,7 @@
          * @param AppEntry      $parent_app_entry
          * @param               $description
          * @param               $url
+         *
          * @return AppLinks
          */
         private function createLink( ObjectManager &$manager,
@@ -184,6 +202,4 @@
 
             return $link;
         }
-
-
     }
