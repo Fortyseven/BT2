@@ -1,0 +1,29 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+    <h1>{{ app_filter }}</h1>
+    <div id="AppList">
+        {% for entry in entries %}
+            <div class="entry_body">
+                {% if entry.images %}
+                    <div class="images">
+                        {% for image in entry.images %}
+                            <img src="{{ entry.images }}"/>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <div class="name">{{ entry.name }}</div>
+                <div class="short-description">{{ entry.blurb }}</div>
+                {% if entry.links %}
+                    <div class="links">
+                        <h4>Links</h4>
+                        <ul>
+                            {% for link in entry.links %}
+                                <li><a href="{{ link.url }}">{{ link.description }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock body %}
