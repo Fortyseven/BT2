@@ -36,7 +36,7 @@
         <div class="form-row">
             <div class="form-label">
                 <div>Links</div>
-                <div class="link-add-button"><a onclick="form_links.addBlank()">Add</a></div>
+                <div class="link-add-button"><a onclick="dfb.AddBlank()">Add</a></div>
             </div>
             <div id="AppLinkList" class="form-value">
                 <div class="form-link-header">
@@ -48,7 +48,7 @@
                     <div class="form-link-row" data-linkid="{{ link.vars.value.id }}">
                         <div class="form-link-value">{{ form_widget(link.url) }}</div>
                         <div class="form-link-value">{{ form_widget(link.description) }}</div>
-                        <div class='form-link-actions'><a onclick="form_links.linkDelete({{ link.vars.value.id }});">Remove</a></div>
+                        <div class='form-link-actions'><a data-dfb-role="delete-row" data-dfb-entity-id="{{ link.vars.value.id }}"></a></div>
                     </div>
                 {% endfor %}
             </div>
@@ -68,54 +68,24 @@
     </ul>
     </div>
     <div class="clearfix"></div>
+    <script src="/js/DynamicFormBlock.js"></script>
     <script>
-
-        var form_links = null;
+        var dfb;
 
         $( document ).ready( function ()
-                             {
-                                 form_links = new Links();
-                             } );
-
-
-        var Links = function ()
         {
-            var LINK_BLOCK_ID = "#AppLinkList";
+            dfb = new DynamicFormBlock( {
+                     block_root: "#AppLinkList",
+                     row_prototype: {
+                         template:  '<div class="form-link-row" data-linkid="__local_id__">'
+                                    + '<div class="form-link-value"><input type="text" id="SiteBundle_appentry_links___name___url" name="SiteBundle_appentry[links][__name__][url]" required="required" maxlength="255" /></div>'
+                                    + '<div class="form-link-value"><input type="text" id="SiteBundle_appentry_links___name___description" name="SiteBundle_appentry[links][__name__][description]" required="required" maxlength="255" /></div>'
+                                    + '<div class="form-link-actions"><a onclick="__dfb_instance__.DeleteRow(\'__local_id__\');">Remove</a></div>'
+                                    + '</div>',
+                         dfb_instance: "dfb"
+                     }
+                 } );
+        } );
 
-            var link_prototype = '<div class="form-link-row" data-linkid="__local_id__">'
-                                 +
-                                 '<div class="form-link-value"><input type="text" id="SiteBundle_appentry_links___name___url" name="SiteBundle_appentry[links][__name__][url]" required="required" maxlength="255" /></div>'
-                                 +
-                                 '<div class="form-link-value"><input type="text" id="SiteBundle_appentry_links___name___description" name="SiteBundle_appentry[links][__name__][description]" required="required" maxlength="255" /></div>'
-                                 + '<div class="form-link-actions"><a onclick="form_links.linkDelete(\'__local_id__\');">Remove</a></div>'
-                                 + '</div>';
-            var link_count = 0;
-
-            /* New links won't be persisted to the database until the entire entry is saved. So
-             we mark them specifically so we don't hit the server when removing the link. Links
-             that originated from the server will be a plain numberic id.
-             */
-            this.addBlank = function ()
-            {
-                this.link_count++;
-
-                var new_link = link_prototype.replace( /__name__/g, String( this.link_count ) )
-                        .replace( /__local_id__/g, "LOCAL-" + this.link_count );
-
-                $( LINK_BLOCK_ID ).append( new_link );
-            };
-
-            this.linkDelete = function ( id )
-            {
-                if ( confirm( "Delete this link?" ) )
-                {
-                    var row = $( LINK_BLOCK_ID ).find( ".form-link-row[data-linkid=" + id + "]" );
-                    row.remove();
-                }
-            };
-
-            // construct
-            this.link_count = $( LINK_BLOCK_ID ).find( ".form-link-row" ).length;
-        }
     </script>
 {% endblock %}
