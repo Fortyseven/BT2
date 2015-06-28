@@ -1,0 +1,153 @@
+@import "../../globals";
+
+@bt-form-label-background: #F4F4F4;
+
+/*******************************************************/
+#AdminAppList {
+
+    .entry_content {
+        .Card;
+
+        .entry_name {
+            font-weight: bold;
+            font-size:   1.5em;
+        }
+
+        .entry_shortname {
+            font-style: italic;
+            font-size:  small;
+        }
+
+        .entry_options {
+            float: right;
+            div {
+                float: left;
+                .Button;
+            }
+            a {
+
+            }
+        }
+    }
+
+}
+
+/*******************************************************/
+#AppEntry_View {
+    .Card;
+    font-size: 0.8em;
+
+    .entry_row {
+        padding-bottom: 0.75em;
+    }
+
+    .entry_label {
+        color:       @bt-red;
+        font-weight: bolder;
+        float:       left;
+    }
+
+    .entry_value {
+        padding-left: 6em;
+    }
+
+    .view_actions {
+        float: right;
+        div {
+            float: left;
+            .Button;
+        }
+    }
+}
+
+/*******************************************************/
+#AdminAppNewEntryBtn {
+    float: right;
+}
+
+.Form-Style {
+    border:     none !important;
+    box-shadow: 1px 1px 4px #BBAAAA;
+    padding:    0.5rem;
+    color:      black;
+}
+
+.admin-form {
+    .Card;
+    .form-row {
+        display:        flex;
+        padding-bottom: 2rem;
+
+        .form-label {
+            flex:          1;
+            color:         @bt-red;
+            font-weight:   bolder;
+            text-align:    right;
+            padding-right: 1rem;
+            margin-right:  1rem;
+            background:    @bt-form-label-background;
+
+        }
+        .form-value {
+            flex: 6;
+
+            textarea {
+                min-height: 16rem;
+            }
+            input, select, textarea {
+                width: 100%;
+                .Form-Style;
+                &:focus {
+                    box-shadow: 1px 1px 6px @bt-red !important;
+                    transition: all 0.10s;
+                    outline:    none !important;
+                }
+            }
+        }
+    }
+
+    #AppLinkList {
+        //        .form-row .form-value {
+        //        }
+
+        .form-link-row,
+        .form-link-header {
+
+            padding-bottom: 1rem;
+            clear:          both;
+            display:        flex;
+
+            .form-link-value {
+                flex:          3;
+                padding-right: 1rem;
+            }
+            .form-link-actions {
+                align-self:   center;
+                flex:         1;
+                padding-left: 1rem;
+                font-size:    small;
+                cursor:       pointer;
+            }
+        }
+
+        .form-link-header {
+            font-weight:    bold;
+            padding-bottom: 0;
+            font-size:      small;
+        }
+    }
+
+    .link-add-button a {
+        font-size:       x-small;
+        color:           @bt-dkred;
+        font-weight:     normal;
+        text-decoration: underline;
+    }
+
+}
+
+#SiteBundle_appentry_releaseDate {
+    select {
+        width: 33%;
+    }
+}
