@@ -23,8 +23,8 @@
             $this->loadAppEntryTypes( $manager );
             $manager->flush(); // Need to have these available ASAP
 
-            $this->loadTestData( $manager );
-            $manager->flush();
+//            $this->loadTestData( $manager );
+//            $manager->flush();
         }
 
         private function loadAppEntryTypes( ObjectManager $manager )
