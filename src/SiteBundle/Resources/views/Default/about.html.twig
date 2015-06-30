@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>About</h1>
+    <div style="float:right; padding-left: 2rem; padding-right: 2rem">
+        <img style="border-radius: 1em" src="{{ asset('images/fortyseven.png') }}"/>
+    </div>
+    <div style="font-size: larger; text-align: justify">
+        <p>Toby Deshane has been a professional web and desktop application developer since 2003, and
+           programming as a hobby since the late 80s.</p>
+
+        <p>He has a wide and varied passion for programming
+           and IT in general, using the 'Bytes Templar' brand for his projects.</p>
+
+        <p>Currently, Toby is looking for contract work, or a paid position in a game or web development role.</p>
+
+        <p>Interested in the details? Here's his <a href="resume.pdf">current resume</a>.</p>
+    </div>
+
+    <h1>Contact</h1>
+    <ul>
+        <li><a href="mailto:tobyd@bytestemplar.com">tobyd@bytestemplar.com</a></li>
+    </ul>
+    <h1>Further Information</h1>
+    <ul>
+        <li><a href="https://www.linkedin.com/in/fortyseven">LinkedIn</a></li>
+        <li><a href="https://careers.stackoverflow.com/fortyseven">Careers 2.0</a></li>
+    </ul>
+{% endblock %}

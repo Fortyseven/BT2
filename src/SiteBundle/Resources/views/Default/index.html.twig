@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="FrontPageImage">
+        <img width="100%" src="images/frontpage_collage.jpg"/>
+    </div>
+    <div id="SocialBlock">
+        <div><a href="https://www.facebook.com/BytesTemplar" target="_blank"><img src="{{ asset('images/social_facebook.png') }}"/> Facebook</a></div>
+        <div><a href="https://twitter.com/BytesTemplar" target="_blank"><img src="{{ asset('images/social_twitter.png') }}"/> Twitter</a></div>
+        <div><a href="https://www.youtube.com/user/BytesTemplarInc" target="_blank"><img src="{{ asset('images/social_youtube.png') }}"/> YouTube</a></div>
+        <div><a href="https://github.com/Fortyseven" target="_blank"><img src="{{ asset('images/social_github.png') }}"/> GitHub</a></div>
+        <div><a href="https://bitbucket.org/fortyseven/" target="_blank"><img src="{{ asset('images/social_bitbucket.png') }}"/> BitBucket</a></div>
+    </div>
+    <div class="clearfix"></div>
+{% endblock %}
