@@ -1,0 +1,47 @@
+@import '../globals';
+
+#AppList {
+    .entry_body {
+        .Card;
+        &:hover {
+            .Card-Hover;
+        }
+
+        display:    flex;
+        flex-direction: column;
+
+        .app-name {
+            font-size:   2.5rem;
+            font-weight: bolder;
+            color:       @bt-red;
+            font-family: Conv_RobotoSlab-Bold, serif;
+            order: 1;
+        }
+
+        .app-more {
+            font-weight: bolder;
+            order: 4;
+        }
+
+        .app-label {
+            font-weight: bolder;
+            color:       @bt-red;
+            padding-top: 1rem;
+        }
+
+        .app-short-description {
+            font-size: 1.5rem;
+            order: 2;
+        }
+
+        .app-screenshot {
+//            float:   right;
+            order: 3;
+            img {
+                max-width:  204px/2;
+                max-height: 120px/2;
+                height:     100%;
+            }
+        }
+    }
+}
