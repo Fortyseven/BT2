@@ -2,5 +2,47 @@
 @import "admin/admin_main";
 @import "header";
 
+#AppView_Single {
+    font-size: 2rem;
 
+    .entry_body {
+        padding: 2rem;
 
+        .app-name {
+            font-size:   4rem;
+            font-weight: bolder;
+            color:       @bt-red;
+            font-family: Conv_RobotoSlab-Bold, serif;
+        }
+
+        .app-label {
+            font-weight: bolder;
+            color:       @bt-red;
+            padding-top: 1rem;
+            font-size:   3rem;
+            font-family: Conv_RobotoSlab-Bold, serif;
+        }
+
+        .app-links a {
+            font-size: 2.5rem;
+        }
+
+        .app-description {
+            font-size: 2rem;
+            text-align: justify;
+        }
+
+        .app-screenshot {
+            float:   right;
+            padding-top:    0rem;
+            padding-right:  0rem;
+            padding-left:   2rem;
+            padding-bottom: 1rem;
+            img {
+                max-width:  408px;
+                max-height: 240px;
+                height:     100%;
+            }
+        }
+    }
+}

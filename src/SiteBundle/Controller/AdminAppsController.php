@@ -8,6 +8,7 @@
     use SiteBundle\Form\AppEntryType;
     use Symfony\Bundle\FrameworkBundle\Controller\Controller;
     use Symfony\Component\HttpFoundation\Request;
+    use Symfony\Component\HttpFoundation\Response;
 
     /**
      * AppEntry controller.
@@ -16,6 +17,10 @@
      */
     class AdminAppsController extends Controller
     {
+        public function adminAction()
+        {
+
+        }
 
         /**
          * Lists all AppEntry entities.

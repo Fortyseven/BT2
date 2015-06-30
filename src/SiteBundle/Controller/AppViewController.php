@@ -76,10 +76,16 @@
         }
 
         /**
-         * @Route("/view/{appid}", name="app_view")
+         * @Route("/view/{shortname}", name="app_view")
+         * @Template("SiteBundle::app_view.html.twig")
          */
-        public function viewAction( $appid )
+        public function viewAction( $shortname )
         {
+            $dm = $this->getDoctrine()->getManager();
+
+            $entry = $dm->getRepository( 'SiteBundle:AppEntry' )->findOneBy( [ "shortName" => $shortname ] );
+
+            return [ "entry" => $entry ];
         }
 
 

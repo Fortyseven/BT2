@@ -7,21 +7,22 @@
                 {% if entry.screenshotPath %}
                     <div class="app-screenshot"><img src="{{ entry.getScreenshotWebPath() }}"/></div>
                 {% endif %}
-                <div class="app-name">{{ entry.name }}</div>
+                <div class="app-name"><a href="{{ path("app_view", {"shortname" : entry.shortname}) }}">{{ entry.name }}</a></div>
                 <div class="app-short-description">{{ entry.blurb }}</div>
-                {% if entry.links and entry.links.count > 0 %}
-                    <div class="app-links">
-                        <div class="app-label">Links</div>
-                        <ul>
-                            {% for link in entry.links %}
-                                <li><a href="{{ link.url }}">{{ link.description }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-                {% if entry.extra %}
-                    {{ entry.extra }}
-                {% endif %}
+                <div class="app-more"><a href="{{ path("app_view", {"shortname" : entry.shortname}) }}">More</a></div>
+                {#{% if entry.links and entry.links.count > 0 %}#}
+                    {#<div class="app-links">#}
+                        {#<div class="app-label">Links</div>#}
+                        {#<ul>#}
+                            {#{% for link in entry.links %}#}
+                                {#<li><a href="{{ link.url }}">{{ link.description }}</a></li>#}
+                            {#{% endfor %}#}
+                        {#</ul>#}
+                    {#</div>#}
+                {#{% endif %}#}
+                {#{% if entry.extra %}#}
+                    {#{{ entry.extra }}#}
+                {#{% endif %}#}
                 <div class="clearfix"></div>
             </div>
         {% endfor %}
