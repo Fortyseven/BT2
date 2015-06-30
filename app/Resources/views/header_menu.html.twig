@@ -1,13 +1,13 @@
 <div id="HeaderMenu">
     <div id="HeaderMenuContainer">
-        <div id="HeaderMenuLogo"><img style="vertical-align: top" src="/images/logo512.png"></div>
+        <div id="HeaderMenuLogo"><a href="/"><img style="vertical-align: top" src="/images/logo512.png"></a></div>
         <ul>
             <li id="MenuGames" {% if app_filter is defined and app_filter == "Games" %}class="selected"{% endif %}><a href="{{ path("apps_games") }}">Games</a></li>
             <li id="MenuWeb" {% if app_filter is defined and app_filter == "Web" %}class="selected"{% endif %}><a href="{{ path("apps_web") }}">Web</a></li>
             <li id="MenuMobile" {% if app_filter is defined and app_filter == "Mobile" %}class="selected"{% endif %}><a href="{{ path("apps_mobile") }}">Mobile</a></li>
             <li id="MenuOther" {% if app_filter is defined and app_filter == "Other" %}class="selected"{% endif %}><a href="{{ path("apps_other") }}">Other</a></li>
             <li id="MenuBlog"><a href="http://bytestemplar.blogspot.com/">Blog</a></li>
-            <li id="MenuAbout"><a href="#">About</a></li>
+            <li id="MenuAbout"><a href="{{ path("about") }}">About</a></li>
         </ul>
     </div>
 </div>
