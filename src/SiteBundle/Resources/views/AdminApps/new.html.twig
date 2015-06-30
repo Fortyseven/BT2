@@ -2,14 +2,110 @@
 
 {% block body -%}
     <h1>Add New Application</h1>
+    <div id="AdminAppEdit" class="admin-form">
+        {{ form_start(form) }}
+        <div class="form-row">
+            <div class="form-label">{{ form_label(form.entryType) }}</div>
+            <div class="form-value">{{ form_widget(form.entryType) }}</div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">{{ form_label(form.name) }}</div>
+            <div class="form-value">{{ form_widget(form.name) }}</div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">{{ form_label(form.shortName) }}</div>
+            <div class="form-value">{{ form_widget(form.shortName) }}</div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">{{ form_label(form.description) }}</div>
+            <div class="form-value">{{ form_widget(form.description) }}</div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">{{ form_label(form.blurb) }}</div>
+            <div class="form-value">{{ form_widget(form.blurb) }}</div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">{{ form_label(form.extra) }}</div>
+            <div class="form-value">{{ form_widget(form.extra) }}</div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">{{ form_label(form.releaseDate) }}</div>
+            <div class="form-value">{{ form_widget(form.releaseDate) }}</div>
+        </div>
+        <div class="form-row">
+            <div class="form-label">
+                <div>Screenshot</div>
+            </div>
+            <div class="form-value">
+                <div>
+                    {{ form_widget(form.file) }}
+                </div>
+                {% if form.vars.value.getScreenshotPath() %}
+                    <div class="form-screenshot-preview">
+                        <img src="/uploads/screenshots/{{ form.vars.value.getScreenshotPath() }}"/>
+                    </div>
+                    {{ form_label(form.remove_screenshot) }}
+                    {{ form_widget(form.remove_screenshot) }}
+                {% else %}
+                    {% do form.remove_screenshot.setRendered %}
+                {% endif %}
+            </div>
 
-    {{ form(form) }}
+        </div>
+        <div class="form-row">
+            <div class="form-label">
+                <div>Links</div>
+                <div class="link-add-button"><a onclick="dfb.AddBlank()">Add</a></div>
+            </div>
+            <div id="AppLinkList" class="form-value">
+                <div class="form-link-header">
+                    <div class="form-link-value"><span>URL</span></div>
+                    <div class="form-link-value"><span>Description</span></div>
+                    <div class='form-link-actions'></div>
+                </div>
+                {% for link in form.links %}
+                    <div class="form-link-row" data-linkid="{{ link.vars.value.id }}">
+                        <div class="form-link-value">{{ form_widget(link.url) }}</div>
+                        <div class="form-link-value">{{ form_widget(link.description) }}</div>
+                        <div class='form-link-actions'><a data-dfb-role="delete-row" data-dfb-entity-id="{{ link.vars.value.id }}"></a></div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-submit">{{ form_widget(form.submit) }}</div>
+    </div>
+    {{ form_end(form) }}
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('admin_apps') }}">
+                Back to the list
+            </a>
+        </li>
+    </ul>
+    </div>
+    <div class="clearfix"></div>
+    <script src="/js/DynamicFormBlock.js"></script>
+    <script>
+        var dfb;
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('admin_apps') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+        $( document ).ready( function ()
+                             {
+                                 dfb = new DynamicFormBlock( {
+                                                                 block_root:    "#AppLinkList",
+                                                                 row_prototype: {
+                                                                     template: '<div class="form-link-row" data-linkid="__local_id__">'
+                                                                               +
+                                                                               '<div class="form-link-value"><input type="text" id="SiteBundle_appentry_links___name___url" name="SiteBundle_appentry[links][__name__][url]" required="required" maxlength="255" /></div>'
+                                                                               +
+                                                                               '<div class="form-link-value"><input type="text" id="SiteBundle_appentry_links___name___description" name="SiteBundle_appentry[links][__name__][description]" required="required" maxlength="255" /></div>'
+                                                                               + '<div class="form-link-actions"><a onclick="__dfb_instance__.DeleteRow(\'__local_id__\');">Remove</a></div>'
+                                                                               + '</div>',
+                                                                     dfb_instance: "dfb"
+                                                                 }
+                                                             } );
+                             } );
+
+    </script>
 {% endblock %}

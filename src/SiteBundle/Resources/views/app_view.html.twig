@@ -6,7 +6,7 @@
             {% if entry.screenshotPath %}
                 <div class="app-screenshot"><img src="{{ entry.getScreenshotWebPath() }}"/></div>
             {% endif %}
-            <div class="app-description">{{ entry.description }}</div>
+            <div class="app-description">{{ entry.description|raw }}</div>
             {% if entry.links and entry.links.count > 0 %}
                 <div class="app-links">
                     <div class="app-label">Links</div>
@@ -18,7 +18,7 @@
                 </div>
             {% endif %}
             {% if entry.extra %}
-                {{ entry.extra }}
+                {{ entry.extra|raw }}
             {% endif %}
             <div class="clearfix"></div>
         </div>

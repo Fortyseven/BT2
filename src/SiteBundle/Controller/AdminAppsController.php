@@ -53,6 +53,21 @@
 
             if ( $form->isValid() ) {
                 $em = $this->getDoctrine()->getManager();
+
+                $links = $form->getData()->getLinks();
+                foreach ( $links as &$link ) {
+                    $link->setAppId( $entity );
+                }
+
+                if ( $form[ 'remove_screenshot' ]->getData() ) {
+                    // delete screenshot
+                    $entity->deleteScreenshot();
+                }
+                else {
+                    // handle screenshot
+                    $entity->upload();
+                }
+
                 $em->persist( $entity );
                 $em->flush();
 
@@ -73,7 +88,7 @@
         {
             $form = $this->createForm( new AppEntryType(),
                                        $entity,
-                                       [ 'action' => $this->generateUrl( 'admin_apps_new' ),
+                                       [ 'action' => $this->generateUrl( 'appentry_create' ),
                                          'method' => 'POST', ] );
 
             $form->add( 'submit', 'submit', [ 'label' => 'Create' ] );
