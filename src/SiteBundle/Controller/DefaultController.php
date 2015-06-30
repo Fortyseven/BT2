@@ -3,6 +3,7 @@
     namespace SiteBundle\Controller;
 
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+    use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
     use Symfony\Bundle\FrameworkBundle\Controller\Controller;
     use Symfony\Component\HttpFoundation\Response;
 
@@ -10,9 +11,19 @@
     {
         /**
          * @Route("/", name="homepage")
+         * @Template()
          */
         public function indexAction()
         {
-            return $this->render( 'default/index.html.twig' );
+            return [];
+        }
+
+        /**
+         * @Route("/about", name="about")
+         * @Template()
+         */
+        public function aboutAction()
+        {
+            return [];
         }
     }

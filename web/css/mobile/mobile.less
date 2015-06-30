@@ -1,59 +1,63 @@
 @import "../globals";
 
 #Content {
-  padding-top: 0.5em;
-  box-shadow:  none;
-  min-height:  100px;
+    padding-top: 0.5em;
+    box-shadow:  none;
+    min-height:  100px;
 }
 
 /***HeaderMenu***********************************************/
 
 #HeaderMenu {
-  width:            100%;
-  background-color: @bt-red;
-  font-family:      "Conv_RobotoSlab-Bold", serif;
+    width:            100%;
+    background-color: @bt-red;
+    font-family:      "Conv_RobotoSlab-Bold", serif;
 }
 
 #HeaderMenuContainer {
-  font-size:  2em;
-  text-align: center;
-
-  div {
+    font-size:  2em;
     text-align: center;
-  }
 
-  a {
-    color: white;
-    text-shadow: 2px 2px 5px @bt-dkred;
-  }
+    div {
+        text-align: center;
+    }
 
-  a:hover {
-    text-decoration: none;
-    position:        relative;
-    top:             4px;
-    color:           gold;
-  }
+    a {
+        color:       white;
+        text-shadow: 2px 2px 5px @bt-dkred;
+    }
 
-  .selected a {
-    text-shadow: 0 0 8px black;
-    color:       @bt-menu-selected;
-  }
+    a:hover {
+        text-decoration: none;
+        position:        relative;
+        top:             4px;
+        color:           gold;
+    }
 
-  ul {
-    padding: 0;
-    margin:  0;
-  }
+    .selected a {
+        text-shadow: 0 0 8px black;
+        color:       @bt-menu-selected;
+    }
 
-  li {
-    list-style: none;
-    display:    block;
-  }
+    ul {
+        padding: 0;
+        margin:  0;
+    }
+
+    li {
+        list-style: none;
+        display:    block;
+    }
 }
+
 /************************************************************/
 #HeaderMenuLogo {
-  clear: both;
+    clear: both;
 
-  img {
-    width: 100%;
-  }
+    img {
+        width: 100%;
+    }
 }
+
+@import "frontpage.less";
+@import "app_views";
