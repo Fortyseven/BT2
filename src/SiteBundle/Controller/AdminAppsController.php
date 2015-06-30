@@ -181,10 +181,18 @@
             if ( $editForm->isValid() ) {
 
                 // persist tags
-
                 $links = $editForm->getData()->getLinks();
                 foreach ( $links as &$link ) {
                     $link->setAppId( $entity );
+                }
+
+                if ( $editForm[ 'remove_screenshot' ]->getData() ) {
+                    // delete screenshot
+                    $entity->deleteScreenshot();
+                }
+                else {
+                    // handle screenshot
+                    $entity->upload();
                 }
 
                 $em->flush();

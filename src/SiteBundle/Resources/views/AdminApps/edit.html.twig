@@ -35,6 +35,26 @@
         </div>
         <div class="form-row">
             <div class="form-label">
+                <div>Screenshot</div>
+            </div>
+            <div class="form-value">
+                <div>
+                    {{ form_widget(edit_form.file) }}
+                </div>
+                {% if edit_form.vars.value.getScreenshotPath() %}
+                    <div class="form-screenshot-preview">
+                        <img src="/uploads/screenshots/{{ edit_form.vars.value.getScreenshotPath() }}"/>
+                    </div>
+                    {{ form_label(edit_form.remove_screenshot) }}
+                    {{ form_widget(edit_form.remove_screenshot) }}
+                {% else %}
+                    {% do edit_form.remove_screenshot.setRendered %}
+                {% endif %}
+            </div>
+
+        </div>
+        <div class="form-row">
+            <div class="form-label">
                 <div>Links</div>
                 <div class="link-add-button"><a onclick="dfb.AddBlank()">Add</a></div>
             </div>
@@ -73,19 +93,21 @@
         var dfb;
 
         $( document ).ready( function ()
-        {
-            dfb = new DynamicFormBlock( {
-                     block_root: "#AppLinkList",
-                     row_prototype: {
-                         template:  '<div class="form-link-row" data-linkid="__local_id__">'
-                                    + '<div class="form-link-value"><input type="text" id="SiteBundle_appentry_links___name___url" name="SiteBundle_appentry[links][__name__][url]" required="required" maxlength="255" /></div>'
-                                    + '<div class="form-link-value"><input type="text" id="SiteBundle_appentry_links___name___description" name="SiteBundle_appentry[links][__name__][description]" required="required" maxlength="255" /></div>'
-                                    + '<div class="form-link-actions"><a onclick="__dfb_instance__.DeleteRow(\'__local_id__\');">Remove</a></div>'
-                                    + '</div>',
-                         dfb_instance: "dfb"
-                     }
-                 } );
-        } );
+                             {
+                                 dfb = new DynamicFormBlock( {
+                                                                 block_root:    "#AppLinkList",
+                                                                 row_prototype: {
+                                                                     template: '<div class="form-link-row" data-linkid="__local_id__">'
+                                                                               +
+                                                                               '<div class="form-link-value"><input type="text" id="SiteBundle_appentry_links___name___url" name="SiteBundle_appentry[links][__name__][url]" required="required" maxlength="255" /></div>'
+                                                                               +
+                                                                               '<div class="form-link-value"><input type="text" id="SiteBundle_appentry_links___name___description" name="SiteBundle_appentry[links][__name__][description]" required="required" maxlength="255" /></div>'
+                                                                               + '<div class="form-link-actions"><a onclick="__dfb_instance__.DeleteRow(\'__local_id__\');">Remove</a></div>'
+                                                                               + '</div>',
+                                                                     dfb_instance: "dfb"
+                                                                 }
+                                                             } );
+                             } );
 
     </script>
 {% endblock %}

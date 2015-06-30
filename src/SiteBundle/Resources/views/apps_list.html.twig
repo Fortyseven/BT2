@@ -4,18 +4,14 @@
     <div id="AppList">
         {% for entry in entries %}
             <div class="entry_body">
-                {% if entry.images %}
-                    <div class="images">
-                        {% for image in entry.images %}
-                            <img src="{{ entry.images }}"/>
-                        {% endfor %}
-                    </div>
+                {% if entry.screenshotPath %}
+                    <div class="app-screenshot"><img src="{{ entry.getScreenshotWebPath() }}"/></div>
                 {% endif %}
-                <div class="name">{{ entry.name }}</div>
-                <div class="short-description">{{ entry.blurb }}</div>
-                {% if entry.links %}
-                    <div class="links">
-                        <h4>Links</h4>
+                <div class="app-name">{{ entry.name }}</div>
+                <div class="app-short-description">{{ entry.blurb }}</div>
+                {% if entry.links and entry.links.count > 0 %}
+                    <div class="app-links">
+                        <div class="app-label">Links</div>
                         <ul>
                             {% for link in entry.links %}
                                 <li><a href="{{ link.url }}">{{ link.description }}</a></li>
@@ -23,6 +19,10 @@
                         </ul>
                     </div>
                 {% endif %}
+                {% if entry.extra %}
+                    {{ entry.extra }}
+                {% endif %}
+                <div class="clearfix"></div>
             </div>
         {% endfor %}
     </div>

@@ -1,3 +1,26 @@
+/*
+Example template:
+    | <div class="form-link-row" data-linkid="__local_id__"
+    |     <div class="form-link-value">
+    |          <input type="text" id="SiteBundle_appentry_links___name___url" name="SiteBundle_appentry[links][__name__][url]" required="required" maxlength="255" />
+    |      </div>
+    |      <div class="form-link-value">
+    |          <input type="text" id="SiteBundle_appentry_links___name___description" name="SiteBundle_appentry[links][__name__][description]" required="required" maxlength="255" />
+    |       </div>
+    |      <div class="form-link-actions">
+    |          <a onclick="__dfb_instance__.DeleteRow(\'__local_id__\');">Remove</a>
+    |      </div>
+    |  </div>
+
+Template Key:
+    "__name__" - Primary key as provided by server, or placehodler generated for new rows.
+
+    "__dfb_instance__" - Variable name of the DFB instance.
+
+    "__local_id__" - You don't need to specify this yourself anywhere; used internally for locally created rows; rows coming
+                     from the server are generated automatically.
+ */
+
 
 var DynamicFormBlock = function ( options )
 {
@@ -68,7 +91,6 @@ DynamicFormBlock.prototype.Init = function ()
 
                 $( el ).text( self._options.row_prototype.str_delete );
 
-                console.log(self, self._options);
             });
 }
 

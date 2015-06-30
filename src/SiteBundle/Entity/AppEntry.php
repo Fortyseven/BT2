@@ -5,7 +5,11 @@
     use DateTime;
     use Doctrine\Common\Collections\ArrayCollection;
     use Doctrine\ORM\Mapping as ORM;
+    use Symfony\Component\HttpFoundation\File\UploadedFile;
+    use Symfony\Component\Validator\Constraints as Assert;
     use Symfony\Component\Validator\Constraints\Date;
+
+    define( 'PATH_WEBSERVER_IMAGES', 'uploads/screenshots' );
 
     /**
      * AppEntry
@@ -80,11 +84,15 @@
         private $links;
 
         /**
-         * @var ArrayCollection
-         * @ORM\OneToMany(targetEntity="SiteBundle\Entity\AppImage", mappedBy="appId")
+         * @var string
+         * @ORM\Column(type="string", options={"default"=null}, nullable=true)
          */
-        private $images;
+        private $screenshot_path;
 
+        /**
+         * @Assert\File(maxSize="6000000")
+         */
+        private $file;
 
         /**
          * @var int
@@ -228,6 +236,22 @@
         }
 
         /**
+         * @param UploadedFile $file
+         */
+        public function setFile( UploadedFile $file = null )
+        {
+            $this->file = $file;
+        }
+
+        /**
+         * @return UploadedFile
+         */
+        public function getFile()
+        {
+            return $this->file;
+        }
+
+        /**
          * @return AppEntryType
          */
         public function getEntryType()
@@ -237,6 +261,8 @@
 
         /**
          * @param AppEntryType $entryType
+         *
+         * @return AppEntry
          */
         public function setEntryType( $entryType )
         {
@@ -255,6 +281,8 @@
 
         /**
          * @param \DateTime $releaseDate
+         *
+         * @return AppEntry
          */
         public function setReleaseDate( $releaseDate )
         {
@@ -309,22 +337,71 @@
             return $this;
         }
 
-        /**
-         * @return ArrayCollection
-         */
-        public function getImages()
+
+        public function upload()
         {
-            return $this->images;
+            if ( $this->getFile() === null ) {
+                return;
+            }
+
+            $this->deleteScreenshot();
+
+            $new_filename = sha1( uniqid( mt_rand(), true ) ) . "." . $this->getFile()->guessExtension();//."_".$this->getFile()->getClientOriginalName();
+
+            $this->getFile()->move( $this->getUploadRootDir(), $new_filename );
+
+            $this->screenshot_path = $new_filename;
+
+            $this->file = null;
+        }
+
+        public function deleteScreenshot()
+        {
+            $path = $this->getUploadRootDir() . '/' . $this->screenshot_path;
+
+            if ( $this->screenshot_path && file_exists( $path ) ) {
+
+                // try to, at least; not a big deal if it fails
+                unlink( $path );
+                $this->screenshot_path = null;
+            }
+        }
+
+        private function getUploadRootDir()
+        {
+            return __DIR__ . '/../../../web/' . $this->getUploadDir();
+        }
+
+        private function getUploadDir()
+        {
+            return PATH_WEBSERVER_IMAGES;
         }
 
         /**
-         * @param ArrayCollection $images
+         * @return string
+         */
+        public function getScreenshotPath()
+        {
+            return $this->screenshot_path;
+        }
+
+
+        /**
+         * @return string
+         */
+        public function getScreenshotWebPath()
+        {
+            return "/" . PATH_WEBSERVER_IMAGES . "/" . $this->getScreenshotPath();
+        }
+
+        /**
+         * @param string $screenshot_path
          *
          * @return AppEntry
          */
-        public function setImages( $images )
+        public function setScreenshotPath( $screenshot_path )
         {
-            $this->images = $images;
+            $this->screenshot_path = $screenshot_path;
 
             return $this;
         }

@@ -19,15 +19,17 @@
                     ->add( 'shortName' )
                     ->add( 'description', 'textarea' )
                     ->add( 'blurb', 'text' )
-                    ->add( 'extra', 'textarea' )
+                    ->add( 'extra', 'textarea', [ 'required' => false ] )
                     ->add( 'releaseDate', 'date' )
+                    ->add( 'screenshot_path', 'hidden', [ 'required' => false, 'mapped' => false ] )
+                    ->add( 'file' )
+                    ->add( 'remove_screenshot', 'checkbox', [ 'mapped' => false, 'required' => false ] )
                     ->add( 'links',
                            'collection',
-                           [ 'type'               => new AppLinkType(),
-                             'allow_add'          => true,
-                             'allow_delete'       => true,
-                             'delete_empty'       => true,
-//                             'attr'               => [ 'id' => 'AdminEditLinks' ]
+                           [ 'type'         => new AppLinkType(),
+                             'allow_add'    => true,
+                             'allow_delete' => true,
+                             'delete_empty' => true,
                            ] );
         }
 
