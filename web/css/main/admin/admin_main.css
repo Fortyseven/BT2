@@ -1,0 +1,31 @@
+.Card{background:#f8f8f8;padding:.5em;margin:1em;box-shadow:2px 2px 8px #888;clear:both}
+.Card-Hover{box-shadow:1px 1px 2px #bababa;transition:all .15s;background-color:#fff}
+.Button{background:#800;border-radius:2em;margin-left:.1em;margin-right:.1em;text-align:center;color:#fff;font-size:12pt;font-weight:bold;text-transform:capitalize}
+.Button a{min-width:8em;border-radius:2em;padding:.5em;margin:0;font-weight:bold;color:#fff;display:inline-block}
+.Button a:hover,.Button button:hover{background:#400;transition:background .125s}
+.Button button{display:inline-block;border:none;background:#800;border-radius:2em;font-weight:bold;min-width:8em;padding:.5em;margin:0;color:#fff}
+#AdminAppList .entry_content{background:#f8f8f8;padding:.5em;margin:1em;box-shadow:2px 2px 8px #888;clear:both}#AdminAppList .entry_content .entry_name{font-weight:bold;font-size:1.5em}
+#AdminAppList .entry_content .entry_shortname{font-style:italic;font-size:small}
+#AdminAppList .entry_content .entry_options{float:right}#AdminAppList .entry_content .entry_options div{float:left;background:#800;border-radius:2em;margin-left:.1em;margin-right:.1em;text-align:center;color:#fff;font-size:12pt;font-weight:bold;text-transform:capitalize}
+#AdminAppList .entry_content .entry_options div a{min-width:8em;border-radius:2em;padding:.5em;margin:0;font-weight:bold;color:#fff;display:inline-block}
+#AdminAppList .entry_content .entry_options div a:hover,#AdminAppList .entry_content .entry_options div button:hover{background:#400;transition:background .125s}
+#AdminAppList .entry_content .entry_options div button{display:inline-block;border:none;background:#800;border-radius:2em;font-weight:bold;min-width:8em;padding:.5em;margin:0;color:#fff}
+#AppEntry_View{background:#f8f8f8;padding:.5em;margin:1em;box-shadow:2px 2px 8px #888;clear:both;font-size:.8em}#AppEntry_View .entry_row{padding-bottom:.75em}
+#AppEntry_View .entry_label{color:#800;font-weight:bolder;float:left}
+#AppEntry_View .entry_value{padding-left:6em}
+#AppEntry_View .view_actions{float:right}#AppEntry_View .view_actions div{float:left;background:#800;border-radius:2em;margin-left:.1em;margin-right:.1em;text-align:center;color:#fff;font-size:12pt;font-weight:bold;text-transform:capitalize}
+#AppEntry_View .view_actions div a{min-width:8em;border-radius:2em;padding:.5em;margin:0;font-weight:bold;color:#fff;display:inline-block}
+#AppEntry_View .view_actions div a:hover,#AppEntry_View .view_actions div button:hover{background:#400;transition:background .125s}
+#AppEntry_View .view_actions div button{display:inline-block;border:none;background:#800;border-radius:2em;font-weight:bold;min-width:8em;padding:.5em;margin:0;color:#fff}
+#AdminAppNewEntryBtn{float:right}
+.Form-Style{border:none !important;box-shadow:1px 1px 4px #baa;padding:.5rem;color:#000}
+.admin-form{background:#f8f8f8;padding:.5em;margin:1em;box-shadow:2px 2px 8px #888;clear:both}.admin-form .form-row{display:flex;padding-bottom:2rem}.admin-form .form-row .form-label{flex:1;color:#800;font-weight:bolder;text-align:right;padding-right:1rem;margin-right:1rem;background:#f4f4f4}
+.admin-form .form-row .form-value{flex:6}.admin-form .form-row .form-value textarea{min-height:16rem}
+.admin-form .form-row .form-value input,.admin-form .form-row .form-value select,.admin-form .form-row .form-value textarea{width:100%;border:none !important;box-shadow:1px 1px 4px #baa;padding:.5rem;color:#000}.admin-form .form-row .form-value input:focus,.admin-form .form-row .form-value select:focus,.admin-form .form-row .form-value textarea:focus{box-shadow:1px 1px 6px #800 !important;transition:all .1s;outline:none !important}
+.admin-form .form-row .form-value input[type="checkbox"]{width:auto;border:auto !important;box-shadow:none !important;vertical-align:middle}
+.admin-form #AppLinkList .form-link-row,.admin-form #AppLinkList .form-link-header{padding-bottom:1rem;clear:both;display:flex}.admin-form #AppLinkList .form-link-row .form-link-value,.admin-form #AppLinkList .form-link-header .form-link-value{flex:3;padding-right:1rem}
+.admin-form #AppLinkList .form-link-row .form-link-actions,.admin-form #AppLinkList .form-link-header .form-link-actions{align-self:center;flex:1;padding-left:1rem;font-size:small;cursor:pointer}
+.admin-form #AppLinkList .form-link-header{font-weight:bold;padding-bottom:0;font-size:small}
+.admin-form .link-add-button a{font-size:x-small;color:#400;font-weight:normal;text-decoration:underline;cursor:pointer}
+.admin-form .form-screenshot-preview{padding-top:1rem;clear:both}.admin-form .form-screenshot-preview img{box-shadow:0 0 5px #ccc;width:256px}
+#SiteBundle_appentry_releaseDate select{width:33%}

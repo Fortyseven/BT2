@@ -1,0 +1,12 @@
+.Card{background:#f8f8f8;padding:.5em;margin:1em;box-shadow:2px 2px 8px #888;clear:both}
+.Card-Hover{box-shadow:1px 1px 2px #bababa;transition:all .15s;background-color:#fff}
+.Button{background:#800;border-radius:2em;margin-left:.1em;margin-right:.1em;text-align:center;color:#fff;font-size:12pt;font-weight:bold;text-transform:capitalize}
+.Button a{min-width:8em;border-radius:2em;padding:.5em;margin:0;font-weight:bold;color:#fff;display:inline-block}
+.Button a:hover,.Button button:hover{background:#400;transition:background .125s}
+.Button button{display:inline-block;border:none;background:#800;border-radius:2em;font-weight:bold;min-width:8em;padding:.5em;margin:0;color:#fff}
+#AppList .entry_body{background:#f8f8f8;padding:.5em;margin:1em;box-shadow:2px 2px 8px #888;clear:both}#AppList .entry_body:hover{box-shadow:1px 1px 2px #bababa;transition:all .15s;background-color:#fff}
+#AppList .entry_body .app-name{font-size:3rem;font-weight:bolder;color:#800;font-family:Conv_RobotoSlab-Bold,serif}
+#AppList .entry_body .app-more{font-weight:bolder}
+#AppList .entry_body .app-label{font-weight:bolder;color:#800;padding-top:1rem}
+#AppList .entry_body .app-short-description{font-size:1.5rem}
+#AppList .entry_body .app-screenshot{float:right;padding:1rem}#AppList .entry_body .app-screenshot img{max-width:204px;max-height:120px;height:100%}

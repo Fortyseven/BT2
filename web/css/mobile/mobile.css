@@ -1,0 +1,22 @@
+.Card{background:#f8f8f8;padding:.5em;margin:1em;box-shadow:2px 2px 8px #888;clear:both}
+.Card-Hover{box-shadow:1px 1px 2px #bababa;transition:all .15s;background-color:#fff}
+.Button{background:#800;border-radius:2em;margin-left:.1em;margin-right:.1em;text-align:center;color:#fff;font-size:12pt;font-weight:bold;text-transform:capitalize}
+.Button a{min-width:8em;border-radius:2em;padding:.5em;margin:0;font-weight:bold;color:#fff;display:inline-block}
+.Button a:hover,.Button button:hover{background:#400;transition:background .125s}
+.Button button{display:inline-block;border:none;background:#800;border-radius:2em;font-weight:bold;min-width:8em;padding:.5em;margin:0;color:#fff}
+#Content{padding-top:.5em;box-shadow:none;min-height:100px}
+#HeaderMenu{width:100%;background-color:#800;font-family:"Conv_RobotoSlab-Bold",serif}
+#HeaderMenuContainer{font-size:2em;text-align:center}#HeaderMenuContainer div{text-align:center}
+#HeaderMenuContainer a{color:#fff;text-shadow:2px 2px 5px #400}
+#HeaderMenuContainer a:hover{text-decoration:none;position:relative;top:4px;color:#ffd700}
+#HeaderMenuContainer .selected a{text-shadow:0 0 8px #000;color:#ffd700}
+#HeaderMenuContainer ul{padding:0;margin:0}
+#HeaderMenuContainer li{list-style:none;display:block}
+#HeaderMenuLogo{clear:both}#HeaderMenuLogo img{width:100%}
+#SocialBlock{display:block;margin-left:auto;margin-right:auto;padding-top:1rem}#SocialBlock div{width:50%;font-family:"Conv_RobotoSlab-Bold",serif;float:left}
+#AppList .entry_body{background:#f8f8f8;padding:.5em;margin:1em;box-shadow:2px 2px 8px #888;clear:both;display:flex;flex-direction:column}#AppList .entry_body:hover{box-shadow:1px 1px 2px #bababa;transition:all .15s;background-color:#fff}
+#AppList .entry_body .app-name{font-size:2.5rem;font-weight:bolder;color:#800;font-family:Conv_RobotoSlab-Bold,serif;order:1}
+#AppList .entry_body .app-more{font-weight:bolder;order:4}
+#AppList .entry_body .app-label{font-weight:bolder;color:#800;padding-top:1rem}
+#AppList .entry_body .app-short-description{font-size:1.5rem;order:2}
+#AppList .entry_body .app-screenshot{order:0}#AppList .entry_body .app-screenshot img{width:100%}
