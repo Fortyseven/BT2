@@ -3,7 +3,7 @@
     <h1>{{ app_filter }}</h1>
     <div id="AppList">
         {% for entry in entries %}
-            <div class="entry_body">
+            <div class="entry_body" onclick="document.location ='{{ path("app_view", {"shortname" : entry.shortname}) }}'">
                 {% if entry.screenshotPath %}
                     <div class="app-screenshot"><img src="{{ entry.getScreenshotWebPath() }}"/></div>
                 {% endif %}
