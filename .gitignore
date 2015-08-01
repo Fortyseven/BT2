@@ -10,10 +10,6 @@
 /vendor/
 /web/bower_components/*
 /web/bundles/
-/web/css/*.css
-/web/css/mobile/*.css
-/web/css/main/*.css
-/web/css/main/admin/*.css
 .idea
 /app/db/apps.db
 *~

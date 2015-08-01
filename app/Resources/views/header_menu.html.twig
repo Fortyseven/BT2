@@ -1,8 +1,8 @@
 <div id="HeaderMenu">
     <div id="HeaderMenuContainer">
-        <div id="HeaderMenuLogo"><a href="/"><img style="vertical-align: top" src="/images/logo512.png"></a></div>
+        <div id="HeaderMenuLogo"><a href="/"><img src="/images/logo512.png" alt="Bytes Templar"/></a></div>
         <ul>
-            <li id="MenuGames" {% if app_filter is defined and app_filter == "Games" %}class="selected"{% endif %}><a href="{{ path("apps_games") }}">Games</a></li>
+            <li id="MenuGames" {% if app_filter is defined and app_filter == "Games" %}class="selected"{% endif %}><a href="{{ path("apps_games") }}" title="Games">Games</a></li>
             <li id="MenuWeb" {% if app_filter is defined and app_filter == "Web" %}class="selected"{% endif %}><a href="{{ path("apps_web") }}">Web</a></li>
             <li id="MenuMobile" {% if app_filter is defined and app_filter == "Mobile" %}class="selected"{% endif %}><a href="{{ path("apps_mobile") }}">Mobile</a></li>
             <li id="MenuOther" {% if app_filter is defined and app_filter == "Other" %}class="selected"{% endif %}><a href="{{ path("apps_other") }}">Other</a></li>

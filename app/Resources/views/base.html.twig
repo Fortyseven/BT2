@@ -10,12 +10,29 @@
         <link rel="stylesheet" href="/css/mobile/mobile.css" media="screen and (max-width:700px)"/>
         <link rel="stylesheet" href="/css/main/desktop.css" media="screen and (min-width:701px)"/>
 
-        <link rel="icon" href="/images/favicon.png" sizes="32x32"/>
-        <link rel="icon" href="/images/favicon.png" sizes="48x48"/>
+        <link rel="icon" type="image/png" href="/images/favicon.png" />
+        <link rel="icon" type="image/png" href="/images/favicon.png" />
 
-        <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-        <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- Twitter Summary Card -->
+        <meta name="twitter:card" content="summary"/>
+        <meta name="twitter:site" content="@bytestemplar"/>
+        <meta name="twitter:title" content="Bytes Templar: Web, Mobile, and Game Development"/>
+        <meta name="twitter:description" content="@Fortyseven's home on the web for web, mobile, and game development projects."/>
 
+        <!-- Facebook OpenGraph -->
+        <meta property="og:title" content="Bytes Templar"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:url" content="http://BytesTemplar.com/"/>
+
+        <!-- Win Metro Tile -->
+        <meta name="application-name" content="Bytes Templar"/>
+        <meta name="msapplication-TileColor" content="#bd0000"/>
+        <meta name="msapplication-square70x70logo" content="images/win/tiny.png"/>
+        <meta name="msapplication-square150x150logo" content="images/win/square.png"/>
+        <meta name="msapplication-wide310x150logo" content="images/win/wide.png"/>
+        <meta name="msapplication-square310x310logo" content="images/win/large.png"/>
+
+        <link rel="apple-touch-icon" href="images/win/wide.png">
     </head>
     <body>
         {{ include("header_menu.html.twig") }}
@@ -24,6 +41,8 @@
             {% endblock %}
         </div>
         {{ include("footer.html.twig") }}
+        <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         {#<script src="https://github.com/Khan/tota11y/releases/download/0.0.3/tota11y.min.js"></script>#}
     </body>
 </html>
