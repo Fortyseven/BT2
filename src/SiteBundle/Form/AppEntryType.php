@@ -17,6 +17,7 @@
             $builder->add( 'entryType' )
                     ->add( 'name' )
                     ->add( 'shortName' )
+                    ->add( 'priority')
                     ->add( 'description', 'textarea' )
                     ->add( 'blurb', 'text' )
                     ->add( 'extra', 'textarea', [ 'required' => false ] )
